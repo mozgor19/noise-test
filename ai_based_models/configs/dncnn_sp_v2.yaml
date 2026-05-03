@@ -1,0 +1,15 @@
+model_name: dncnn_sp
+model_tag: DnCNN_SP
+use_mask_channel: true
+ckpt_path: ../weights/dncnn_sp_v2.pth
+
+train_dir: /home/mustafa/Projeler/noise-test/tiny-imagenet-200/train
+epochs: 25
+batch_size: 64
+lr: 2e-4
+patch: 128
+num_workers: 4
+mask_loss_weight: 6.0
+
+noisy_root: ../Tiny-Imagenet
+out_root: ../Tiny-Imagenet

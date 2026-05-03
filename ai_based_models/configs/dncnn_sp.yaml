@@ -1,0 +1,14 @@
+model_name: dncnn
+model_tag: DnCNN
+use_mask_channel: false
+ckpt_path: ../weights/dncnn_sp.pth
+
+train_dir: ../tiny-imagenet-200/train
+epochs: 10
+batch_size: 64
+lr: 2e-4
+patch: 128
+num_workers: 4
+
+noisy_root: ../Tiny-Imagenet
+out_root: ../Tiny-Imagenet
