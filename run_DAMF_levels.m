@@ -4,8 +4,10 @@ noise_levels = [10, 30, 50, 70, 90];
 
 for n = 1:length(noise_levels)
     level = noise_levels(n);
-    input_folder  = sprintf('Tiny-Imagenet/Tiny_Noisy_%d', level);
-    output_folder = sprintf('Tiny-Imagenet/Tiny_Cleaned_DAMF_%d', level);
+    % input_folder  = sprintf('Tiny-Imagenet/Tiny_Noisy_%d', level);
+    % output_folder = sprintf('Tiny-Imagenet/Tiny_Cleaned_DAMF_%d', level);
+    input_folder  = sprintf('480p-Test/Noisy_%d', level);
+    output_folder = sprintf('480p-Test/Cleaned_DAMF_%d', level);
 
     if ~exist(input_folder, 'dir'), continue; end
     if ~exist(output_folder, 'dir'), mkdir(output_folder); end
