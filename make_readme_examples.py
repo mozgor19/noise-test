@@ -19,23 +19,23 @@ METHOD_DIRS = {
 }
 
 EXAMPLE_IMG = "0007.png"
-OUT_DIR = "docs/examples"
+OUT_DIR     = "docs/examples"
+THUMB_W     = 320
+THUMB_H     = 180
+
 os.makedirs(OUT_DIR, exist_ok=True)
+
+def thumb(img):
+    return cv2.resize(img, (THUMB_W, THUMB_H), interpolation=cv2.INTER_AREA)
 
 orig = cv2.imread(os.path.join("480p-Test/Originals_resized", EXAMPLE_IMG))
 
 for method in METHODS:
     row_imgs = []
-    if method == 'Noisy':
-        for lv in NOISE_LEVELS:
-            p = os.path.join(METHOD_DIRS[method].format(lv), EXAMPLE_IMG)
-            img = cv2.imread(p) if os.path.exists(p) else np.zeros_like(orig)
-            row_imgs.append(img)
-    else:
-        for lv in NOISE_LEVELS:
-            p = os.path.join(METHOD_DIRS[method].format(lv), EXAMPLE_IMG)
-            img = cv2.imread(p) if os.path.exists(p) else np.zeros_like(orig)
-            row_imgs.append(img)
+    for lv in NOISE_LEVELS:
+        p = os.path.join(METHOD_DIRS[method].format(lv), EXAMPLE_IMG)
+        img = cv2.imread(p) if os.path.exists(p) else np.zeros_like(orig)
+        row_imgs.append(thumb(img))
 
     strip = np.hstack(row_imgs)
     out_path = os.path.join(OUT_DIR, f"{method}.png")
@@ -43,6 +43,6 @@ for method in METHODS:
     print(f"Kaydedildi: {out_path}")
 
 orig_path = os.path.join(OUT_DIR, "Original.png")
-cv2.imwrite(orig_path, orig)
+cv2.imwrite(orig_path, thumb(orig))
 print(f"Kaydedildi: {orig_path}")
 print("\nBitti. README için docs/examples/ klasörünü kullan.")
