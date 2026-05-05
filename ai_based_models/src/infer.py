@@ -74,7 +74,17 @@ def run_infer(cfg, dataset="tiny"):
             else:
                 x_in = x
 
+            _, _, H, W = x_in.shape
+            pad_h = (8 - H % 8) % 8
+            pad_w = (8 - W % 8) % 8
+            if pad_h > 0 or pad_w > 0:
+                x_in = torch.nn.functional.pad(x_in, (0, pad_w, 0, pad_h), mode='reflect')
+
             y = model(x_in).clamp(0, 1)
+
+            if pad_h > 0 or pad_w > 0:
+                y = y[:, :, :H, :W]
+
             out = to_uint8(y)
             write_rgb(os.path.join(out_dir, os.path.basename(p)), out)
 

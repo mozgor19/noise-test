@@ -15,7 +15,7 @@ for n = 1:length(noise_levels)
     image_files = dir(fullfile(input_folder, '*.png'));
     fprintf('DAMF: %%%d seviyesi basliyor... (%d resim)\n', level, length(image_files));
 
-    for idx = 1:length(image_files)
+    parfor idx = 1:length(image_files)
         img_name = image_files(idx).name;
         I = imread(fullfile(input_folder, img_name));
 

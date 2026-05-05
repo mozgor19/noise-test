@@ -15,7 +15,7 @@ for n = 1:length(noise_levels)
     image_files = dir(fullfile(input_folder, '*.png'));
     fprintf('\nEMPR: %%%d seviyesi basliyor...\n', level);
 
-    for i = 1:length(image_files)
+    parfor i = 1:length(image_files)
         img_name = image_files(i).name;
         I_noisy = imread(fullfile(input_folder, img_name));
 

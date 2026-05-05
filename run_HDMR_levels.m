@@ -15,7 +15,7 @@ for n = 1:length(noise_levels)
     image_files = dir(fullfile(input_folder, '*.png'));
     fprintf('\nHDMR: %%%d seviyesi basliyor...\n', level);
 
-    for idx = 1:length(image_files)
+    parfor idx = 1:length(image_files)
         img_name = image_files(idx).name;
         I_noisy  = imread(fullfile(input_folder, img_name));
 
