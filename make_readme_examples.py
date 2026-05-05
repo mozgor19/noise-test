@@ -18,7 +18,7 @@ METHOD_DIRS = {
     'SeConvUNet': '480p-Test/Cleaned_SeConvUNet_{}',
 }
 
-EXAMPLE_IMG = "0001.png"
+EXAMPLE_IMG = "0007.png"
 OUT_DIR = "docs/examples"
 os.makedirs(OUT_DIR, exist_ok=True)
 
