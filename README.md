@@ -59,7 +59,7 @@ PSNR · SSIM · MAE · RMSE · Pixel-F1 / Precision / Recall · ResNet-18 Top-1 
 > Her satır soldan sağa: %10 · %30 · %50 · %70 · %90 gürültü seviyesi.
 
 ### Orijinal
-![Original](480p-Test/Originals_resized/0007.png)
+![Original](docs/examples/v2/Original.png)
 
 ### Gürültülü (Noisy)
 ![Noisy](docs/examples/v2/Noisy.png)
