@@ -55,41 +55,41 @@ PSNR · SSIM · MAE · RMSE · Pixel-F1 / Precision / Recall · ResNet-18 Top-1 
 
 ## 480p Örnek Görseller
 
-> Aşağıdaki görseller `make_readme_examples.py` çalıştırıldıktan sonra `docs/examples/` klasöründe oluşur.
+> Aşağıdaki görseller `make_readme_examples.py` çalıştırıldıktan sonra `docs/examples/v2/` klasöründe oluşur.
 > Her satır soldan sağa: %10 · %30 · %50 · %70 · %90 gürültü seviyesi.
 
 ### Orijinal
-![Original](docs/examples/Original.png)
+![Original](docs/examples/v2/Original.png)
 
 ### Gürültülü (Noisy)
-![Noisy](docs/examples/Noisy.png)
+![Noisy](docs/examples/v2/Noisy.png)
 
 ### SMF
-![SMF](docs/examples/SMF.png)
+![SMF](docs/examples/v2/SMF.png)
 
 ### AMF
-![AMF](docs/examples/AMF.png)
+![AMF](docs/examples/v2/AMF.png)
 
 ### MDBUTMF
-![MDBUTMF](docs/examples/MDBUTMF.png)
+![MDBUTMF](docs/examples/v2/MDBUTMF.png)
 
 ### EMPR
-![EMPR](docs/examples/EMPR.png)
+![EMPR](docs/examples/v2/EMPR.png)
 
 ### HDMR
-![HDMR](docs/examples/HDMR.png)
+![HDMR](docs/examples/v2/HDMR.png)
 
 ### DAMF
-![DAMF](docs/examples/DAMF.png)
+![DAMF](docs/examples/v2/DAMF.png)
 
 ### DnCNN
-![DnCNN](docs/examples/DnCNN.png)
+![DnCNN](docs/examples/v2/DnCNN.png)
 
 ### DnCNN-SP
-![DnCNN-SP](docs/examples/DnCNN-SP.png)
+![DnCNN-SP](docs/examples/v2/DnCNN-SP.png)
 
 ### SeConvUNet
-![SeConvUNet](docs/examples/SeConvUNet.png)
+![SeConvUNet](docs/examples/v2/SeConvUNet.png)
 
 ## Klasör Yapısı
 

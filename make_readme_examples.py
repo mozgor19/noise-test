@@ -19,7 +19,7 @@ METHOD_DIRS = {
 }
 
 EXAMPLE_IMG = "0007.png"
-OUT_DIR     = "docs/examples"
+OUT_DIR     = "docs/examples/v2"
 THUMB_W     = 320
 THUMB_H     = 180
 
@@ -43,6 +43,7 @@ for method in METHODS:
     print(f"Kaydedildi: {out_path}")
 
 orig_path = os.path.join(OUT_DIR, "Original.png")
-cv2.imwrite(orig_path, thumb(orig))
+orig_strip = np.hstack([thumb(orig)] * 5)
+cv2.imwrite(orig_path, orig_strip)
 print(f"Kaydedildi: {orig_path}")
 print("\nBitti. README için docs/examples/ klasörünü kullan.")
