@@ -33,3 +33,6 @@ legacy/ai_based_models/noisy_copies/
 # sonuç tabloları izlenir; görsel bazındaki büyük tablo hariç (evaluate.py ile yeniden üretilir)
 !results/*.csv
 results/per_image.csv
+
+/.ai.zip
+codex-review.sh
