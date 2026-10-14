@@ -22,3 +22,14 @@ __pycache__/
 dncnn_env/
 .env
 .claude/
+
+# ham çalışma kayıtları (epoch özetleri results/training/ altında izlenir)
+ai_based_models/logs/
+
+# arşivdeki büyük veri/çıktılar (legacy/ altında yalnızca kod, config ve küçük belgeler izlenir)
+legacy/test/dl_outputs/
+legacy/ai_based_models/noisy_copies/
+
+# sonuç tabloları izlenir; görsel bazındaki büyük tablo hariç (evaluate.py ile yeniden üretilir)
+!results/*.csv
+results/per_image.csv
