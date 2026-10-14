@@ -1,0 +1,20 @@
+# v5 (makale): kanal bazlı gürültü/maske, 64x64, seed, val ile en iyi epoch, kosinüs LR, 50 epoch (v4 = aynı tarif 30 epoch, yakınsama kontrolü)
+model_name: dncnn
+model_tag: DnCNN
+use_mask_channel: false
+ckpt_path: ../weights/dncnn_v5.pth
+
+train_dir: ../../tiny-imagenet-200/train
+val_dir: ../../tiny-imagenet-200/val/images
+val_count: 500
+seed: 0
+epochs: 50
+batch_size: 64
+lr: 2e-4
+lr_schedule: cosine
+patch: 64
+num_workers: 4
+mask_loss_weight: 6.0
+
+noisy_root: ../../Tiny-Imagenet
+out_root: ../../Tiny-Imagenet

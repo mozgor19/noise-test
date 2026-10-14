@@ -4,7 +4,7 @@ from tqdm import tqdm
 
 from utils.config import load_config
 from utils.io import list_images, read_rgb, write_rgb, ensure_dir
-from utils.spmask import to_tensor01, to_uint8, sp_mask_fixed, mask_to_tensor
+from utils.spmask import to_tensor01, to_uint8, sp_mask_channel, mask_to_tensor
 
 from models.dncnn import DnCNN
 from models.dncnn_sp import DnCNNSP
@@ -44,7 +44,7 @@ def run_infer(cfg, dataset="tiny"):
     model = build_model(cfg).to(device)
     if not os.path.exists(cfg.ckpt_path):
         raise FileNotFoundError(f"Checkpoint bulunamadı: {cfg.ckpt_path}")
-    model = load_checkpoint(model, cfg.ckpt_path, device, strict=False)
+    model = load_checkpoint(model, cfg.ckpt_path, device, require_noise_model=True)
     model.eval()
 
     ensure_dir(cfg.out_root)
@@ -68,7 +68,7 @@ def run_infer(cfg, dataset="tiny"):
             x = to_tensor01(rgb).unsqueeze(0).to(device)
 
             if cfg.use_mask_channel:
-                m = sp_mask_fixed(rgb)
+                m = sp_mask_channel(rgb)                          # (H,W,3) eğitimle aynı kural
                 m_t = mask_to_tensor(m).unsqueeze(0).to(device)
                 x_in = torch.cat([x, m_t], dim=1)
             else:

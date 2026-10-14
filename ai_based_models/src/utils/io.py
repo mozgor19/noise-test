@@ -22,4 +22,5 @@ def read_rgb(path: str) -> np.ndarray:
 def write_rgb(path: str, rgb_uint8: np.ndarray) -> None:
     bgr = cv2.cvtColor(rgb_uint8, cv2.COLOR_RGB2BGR)
     ensure_dir(os.path.dirname(path))
-    cv2.imwrite(path, bgr)
+    if not cv2.imwrite(path, bgr):
+        raise IOError(f"Yazılamadı: {path}")

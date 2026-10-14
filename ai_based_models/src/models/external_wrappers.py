@@ -19,8 +19,14 @@ class ExternalModelWrapper(nn.Module):
     def forward(self, x):
         return self.net(x)
 
-def load_checkpoint(model: nn.Module, ckpt_path: str, device: torch.device, strict: bool = False) -> nn.Module:
+NOISE_MODEL = "channelwise_v3"  # train.py checkpoint'e yazar; eski (v2) ağırlıklarda yok
+
+def load_checkpoint(model: nn.Module, ckpt_path: str, device: torch.device, strict: bool = True,
+                    require_noise_model: bool = False) -> nn.Module:
+    # strict=True: mimari/checkpoint uyuşmazlığında rastgele ağırlıkla sessizce devam etme
     sd = torch.load(ckpt_path, map_location=device)
+    if require_noise_model and not (isinstance(sd, dict) and sd.get("noise_model") == NOISE_MODEL):
+        raise RuntimeError(f"{ckpt_path}: '{NOISE_MODEL}' ile eğitilmemiş (eski checkpoint?)")
     if isinstance(sd, dict) and "state_dict" in sd:
         sd = sd["state_dict"]
 

@@ -19,6 +19,10 @@ class RunConfig:
     patch: int = 128
     num_workers: int = 4
     mask_loss_weight: float = 6.0
+    seed: int = 0
+    lr_schedule: str = "constant"  # constant | cosine
+    val_dir: Optional[str] = None
+    val_count: int = 500
 
     # inference (optional)
     noisy_root: str = "."
@@ -58,6 +62,10 @@ def load_config(config_path: str) -> RunConfig:
     patch = int(d.get("patch", 128))
     num_workers = int(d.get("num_workers", 4))
     mask_loss_weight = float(d.get("mask_loss_weight", 6.0))
+    seed = int(d.get("seed", 0))
+    lr_schedule = str(d.get("lr_schedule", "constant"))
+    val_dir = _abspath_if_relative(base_dir, d.get("val_dir"))
+    val_count = int(d.get("val_count", 500))
 
     # inference
     noisy_root = _abspath_if_relative(base_dir, d.get("noisy_root", "."))
@@ -80,6 +88,10 @@ def load_config(config_path: str) -> RunConfig:
         patch=patch,
         num_workers=num_workers,
         mask_loss_weight=mask_loss_weight,
+        seed=seed,
+        lr_schedule=lr_schedule,
+        val_dir=val_dir,
+        val_count=val_count,
         noisy_root=noisy_root,
         out_root=out_root,
         external_module_path=external_module_path,
