@@ -1,0 +1,16 @@
+# Current State
+
+## Working
+- ...
+
+## Partially working
+- ...
+
+## Broken / unresolved
+- ...
+
+## Known bugs
+- ...
+
+## Important notes
+- ...
