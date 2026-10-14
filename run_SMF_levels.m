@@ -4,10 +4,10 @@ noise_levels = [10, 30, 50, 70, 90];
 
 for n = 1:length(noise_levels)
     level = noise_levels(n);
-    % input_folder  = sprintf('Tiny-Imagenet/Tiny_Noisy_%d', level);
-    % output_folder = sprintf('Tiny-Imagenet/Tiny_Cleaned_SMF_%d', level);
-    input_folder  = sprintf('480p-Test/Noisy_%d', level);
-    output_folder = sprintf('480p-Test/Cleaned_SMF_%d', level);
+    input_folder  = sprintf('Tiny-Imagenet/Tiny_Noisy_%d', level);
+    output_folder = sprintf('Tiny-Imagenet/Tiny_Cleaned_SMF_%d', level);
+    % input_folder  = sprintf('480p-Test/Noisy_%d', level);
+    % output_folder = sprintf('480p-Test/Cleaned_SMF_%d', level);
 
     if ~exist(input_folder, 'dir'), continue; end
     if ~exist(output_folder, 'dir'), mkdir(output_folder); end
@@ -24,9 +24,9 @@ for n = 1:length(noise_levels)
         end
 
         I_SMF = zeros(size(I_noisy), 'uint8');
-        I_SMF(:,:,1) = medfilt2(I_noisy(:,:,1), [3 3]);
-        I_SMF(:,:,2) = medfilt2(I_noisy(:,:,2), [3 3]);
-        I_SMF(:,:,3) = medfilt2(I_noisy(:,:,3), [3 3]);
+        I_SMF(:,:,1) = medfilt2(I_noisy(:,:,1), [3 3], 'symmetric');  % sıfır dolgu kenarları karartıyordu
+        I_SMF(:,:,2) = medfilt2(I_noisy(:,:,2), [3 3], 'symmetric');  % sıfır dolgu kenarları karartıyordu
+        I_SMF(:,:,3) = medfilt2(I_noisy(:,:,3), [3 3], 'symmetric');  % sıfır dolgu kenarları karartıyordu
 
         imwrite(I_SMF, fullfile(output_folder, img_name));
 

@@ -4,10 +4,10 @@ noise_levels = [10, 30, 50, 70, 90];
 
 for n = 1:length(noise_levels)
     level = noise_levels(n);
-    % input_folder  = sprintf('Tiny-Imagenet/Tiny_Noisy_%d', level);
-    % output_folder = sprintf('Tiny-Imagenet/Tiny_Cleaned_MDBUTMF_%d', level);
-    input_folder  = sprintf('480p-Test/Noisy_%d', level);
-    output_folder = sprintf('480p-Test/Cleaned_MDBUTMF_%d', level);
+    input_folder  = sprintf('Tiny-Imagenet/Tiny_Noisy_%d', level);
+    output_folder = sprintf('Tiny-Imagenet/Tiny_Cleaned_MDBUTMF_%d', level);
+    % input_folder  = sprintf('480p-Test/Noisy_%d', level);
+    % output_folder = sprintf('480p-Test/Cleaned_MDBUTMF_%d', level);
 
     if ~exist(input_folder, 'dir'), continue; end
     if ~exist(output_folder, 'dir'), mkdir(output_folder); end
@@ -41,11 +41,12 @@ function out = mdbutmf_filter(in)
     [r, c] = size(in);
     out = in;
     in  = double(in);
+    p   = padarray(in, [1 1], 'symmetric');   % kenar pikselleri de işlensin
 
-    for i = 2:r-1
-        for j = 2:c-1
+    for i = 1:r
+        for j = 1:c
             if in(i,j) == 0 || in(i,j) == 255
-                window  = in(i-1:i+1, j-1:j+1);
+                window  = p(i:i+2, j:j+2);     % p(i+1,j+1) = in(i,j)
                 flat    = reshape(window, 1, 9);
                 valid   = flat(flat > 0 & flat < 255);
 

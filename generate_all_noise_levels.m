@@ -1,5 +1,10 @@
 clc; clear; close all;
 
+% Tekrarlanabilirlik için sabit seed. NOT: mevcut *_Noisy_* klasörleri seed'siz üretildi;
+% bu betiği yeniden çalıştırmak farklı gürültü üretir ve tüm yöntemlerin yeniden
+% çalıştırılmasını + evaluate.py'nin tekrar koşulmasını gerektirir.
+rng(42, 'twister');
+
 input_folder = 'Tiny-Imagenet/Tiny_Orijinal';
 noise_levels = [0.1, 0.3, 0.5, 0.7, 0.9];
 
